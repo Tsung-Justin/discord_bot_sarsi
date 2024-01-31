@@ -1,5 +1,5 @@
 from discord.ext import commands
-from core.classes import Classes
+from core import Classes
 
 class command(Classes):
     def __init__(self, bot):

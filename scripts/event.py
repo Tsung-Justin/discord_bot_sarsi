@@ -1,5 +1,5 @@
 from discord.ext import commands
-from core.classes import Classes
+from core import Classes
 
 class Event(Classes):
     @commands.Cog.listener()

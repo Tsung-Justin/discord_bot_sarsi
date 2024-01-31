@@ -1,7 +1,7 @@
 import datetime
 from discord.ext import tasks
-from core.classes import Classes
-from core import constant
+from core import Classes
+from core import DISCORD_BOT
 
 class Task(Classes):
     utc_8 = datetime.timezone(datetime.timedelta(hours=8))
@@ -16,13 +16,13 @@ class Task(Classes):
 
     @tasks.loop(time=calcium_time)
     async def eat_calcium(self):
-        user = await self.bot.fetch_user(constant.DISCORD_BOT['SANNY'])
+        user = await self.bot.fetch_user(DISCORD_BOT['SANNY'])
         await user.send('該吃鈣ㄌ')
         print('該吃鈣ㄌ')
 
     @tasks.loop(time=birth_control_time)
     async def eat_birth_control_pill(self):
-        user = await self.bot.fetch_user(constant.DISCORD_BOT['SANNY'])
+        user = await self.bot.fetch_user(DISCORD_BOT['SANNY'])
         await user.send('該吃避孕藥ㄌ')
         print('該吃避孕藥ㄌ')
 

@@ -1,5 +1,5 @@
 import time, os, discord
-from core import constant
+from core import DISCORD_BOT
 from discord.ext import commands
 
 intents = discord.Intents.default()
@@ -33,4 +33,4 @@ async def unload(ctx, extension):
     await ctx.send(f'{extension} script is unloaded.')
 
 if __name__ == '__main__':
-    bot.run(constant.DISCORD_BOT['TOKEN'])
+    bot.run(DISCORD_BOT['TOKEN'])
