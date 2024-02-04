@@ -1,13 +1,14 @@
 import time, os, discord
-from core import DISCORD_BOT
+from core import DISCORD_BOT, Tools
 from discord.ext import commands
 
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 
-bot = commands.Bot(command_prefix='.', intents=intents)
+bot = commands.Bot(command_prefix=',', intents=intents)
 localtime = time.strftime(f'%Y-%m-%d-%A_%H-%M-%S')
+tools = Tools(bot)
 
 @bot.event
 async def on_ready():
@@ -20,16 +21,19 @@ async def on_ready():
 @bot.command()
 async def load(ctx, extension):
     await bot.load_extension(f'scripts.{extension}')
+    await tools.bot_typing(ctx, 1)
     await ctx.send(f'{extension} script is loaded.')
 
 @bot.command()
 async def reload(ctx, extension):
     await bot.reload_extension(f'scripts.{extension}')
+    await tools.bot_typing(ctx, 1)
     await ctx.send(f'{extension} script is reloaded.')
 
 @bot.command()
 async def unload(ctx, extension):
     await bot.unload_extension(f'scripts.{extension}')
+    await tools.bot_typing(ctx, 1)
     await ctx.send(f'{extension} script is unloaded.')
 
 if __name__ == '__main__':
